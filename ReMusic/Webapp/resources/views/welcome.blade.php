@@ -40,10 +40,11 @@
 		<div class="d-flex align-items-center justify-content-center flex-column">
 			<div class="p-2 m-2 bg-info text-white shadow rounded-2">
 				<label for="formFileLg" class="form-label">Sube tu Imagen</label>
-				<input class="form-control form-control-lg" id="formFileLg" type="file">
+				<input class="form-control form-control-lg" id="formFileLg" type="file" accept="image/*" capture="camera">
 			</div>
+			
 			<div class="p-2 m-2 bg-info text-white shadow rounded-2">
-				<button type="button" class="btn btn-primary">Upload</button>
+				<button type="submit" class="btn btn-primary" onclick="window.location.href='/files/YourMusic.mscz'">Upload</button>
 			</div>
 		</div>
 
