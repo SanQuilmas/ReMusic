@@ -20,7 +20,7 @@ php artisan storage:link
 npm install
 ```
 ```
-npm run dev
+npm run build
 ```
 Una vez se enciende el servidor de mysql local ya se podra iniciar el server.
 
