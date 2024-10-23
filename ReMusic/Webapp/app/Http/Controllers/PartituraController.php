@@ -78,7 +78,11 @@ class PartituraController extends Controller
      */
     public function show(string $id)
     {
-        //
+        // Buscar la partitura por ID
+        $partitura = Partitura::findOrFail($id);
+
+        // Pasar la partitura a la vista
+        return view('partituras.show', compact('partitura'));
     }
 
     /**

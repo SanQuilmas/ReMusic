@@ -30,8 +30,8 @@
                             </div>
                         </div>
                         <div id="download-container-{{ $partitura->id }}">
-                            <a href="{{ Storage::url($partitura->musicxml_path) }}" download="{{ basename($partitura->musicxml_path) }}" class="btn btn-success">
-                                Descargar MusicXML
+                            <a href="{{ route('partituras.show', $partitura->id) }}" class="btn btn-success">
+                                Ver y Descargar MusicXML
                             </a>
                         </div>
                     </td>

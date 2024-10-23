@@ -13,6 +13,9 @@ php artisan migrate
 ```
 npm install
 ```
+```
+npm run dev
+```
 Una vez se enciende el servidor de mysql local ya se podra iniciar el server.
 
 ```
