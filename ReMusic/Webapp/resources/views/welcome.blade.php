@@ -28,9 +28,6 @@
 						<li class="nav-item active">
 							<a class="nav-link" href="/partituras">Galeria</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">Opciones</a>
-						</li>
 						</ul>
 					</div>
 				</nav>
@@ -40,7 +37,6 @@
 		<div class="container">
 			@yield('main')
 		</div>
-
 
 	</body>
 </html>

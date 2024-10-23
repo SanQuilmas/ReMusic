@@ -12,6 +12,7 @@
 			</ul>
 		</div><br />
 	@endif
+    
     <div class="p-2 m-2 bg-info text-black shadow rounded-2">
         <form method="post" action="{{ route('partituras.store') }}" enctype="multipart/form-data">
             @csrf
@@ -27,4 +28,5 @@
         </form>
     </div>
 </div>
+
 @endsection
