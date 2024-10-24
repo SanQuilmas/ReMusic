@@ -52,10 +52,23 @@ class ProcessOemer implements ShouldQueue
         // Check if the process failed
         if (!$process->isSuccessful()) {
             Log::error('Oemer process failed: ' . $process->getErrorOutput());
+            // Borrar la partitura si falla el proceso
+            $this->deletePartitura();
             throw new ProcessFailedException($process);
         }
 
         // Mark the progress as complete
         Cache::put("progress_{$this->partituraId}", 100);
     }
+
+    private function deletePartitura()
+    {
+        $partitura = Partitura::find($this->partituraId);
+
+        if ($partitura) {
+            $partitura->delete();
+            Log::info("Partitura con ID {$this->partituraId} eliminada debido a fallo en el proceso.");
+        }
+    }
+    
 }

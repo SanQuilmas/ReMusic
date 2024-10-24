@@ -30,7 +30,7 @@ npm install
 npm run build
 ```
 
-Una vez se enciende el servidor de mysql local ya se podra iniciar el server.
+Una vez se enciende el servidor de mysql local ya se podra iniciar el server con los siguentes comandos.
 
 ```
 npm run dev
