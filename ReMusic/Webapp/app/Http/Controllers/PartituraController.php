@@ -49,10 +49,6 @@ class PartituraController extends Controller
             $imagenPath = storage_path('app/' . $path);
             $outputPath = storage_path('app/public/' . $folderName . '/' . pathinfo($filename, PATHINFO_FILENAME) . '.musicxml');
 
-            //$process = new Process(['oemer', '-o', $outputPath, $imagenPath]);
-            //$process->setTimeout(null); // No timeout
-            //$process->run();
-
             $partitura = new Partitura([
                 'nombre' => $request->get('nombre'),
                 'image_path' => $path,
