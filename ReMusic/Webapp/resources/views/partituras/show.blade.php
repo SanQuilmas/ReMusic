@@ -18,7 +18,11 @@
 		<h1>Nombre: {{ $partitura->nombre }}</h1>
             <plabel>Archivo MusicXML:</label>
             <a href="{{ Storage::url($partitura->musicxml_path) }}" class="btn btn-primary" download>Descargar MusicXML</a>
+
+			<plabel>Archivo Midi:</label>
+            <a href="{{ Storage::url($partitura->midi_path) }}" class="btn btn-primary" download>Descargar Midi</a>
 		</div>
+
 		<div id="osmdContainer"/>
 		<script src="{{ asset('opensheetmusicdisplay.min.js') }}"></script>
 		<script>
@@ -26,7 +30,7 @@
 			osmd.setOptions({
 				backend: "svg",
 				drawTitle: true,
-				drawingParameters: "compacttight" // don't display title, composer etc., smaller margins
+				drawingParameters: "compacttight" 
 			});
 			osmd
 				.load("{{ Storage::url($partitura->musicxml_path) }}")
@@ -36,6 +40,16 @@
 				}
 			);
 		</script>
+	</div>
+
+	<div class="p-2 m-2 bg-info text-black shadow rounded-2">
+		<script src="{{ asset('html-midi-player.min.js') }}"></script>
+
+		<midi-player
+			src="{{ Storage::url($partitura->midi_path) }}"
+			sound-font visualizer="#myVisualizer">
+		</midi-player>
+		<midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
 	</div>
 
 @endsection

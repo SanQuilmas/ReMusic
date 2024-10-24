@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Log;
 use App\Models\Partitura;    
 use App\Jobs\ProcessOemer;    
+use App\Jobs\ProcessConvert;  
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Illuminate\Http\Request;
@@ -11,9 +12,6 @@ use Illuminate\Support\Facades\Cache;
 
 class PartituraController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $partituras = Partitura::all();
@@ -21,17 +19,11 @@ class PartituraController extends Controller
         return view('partituras.index', compact('partituras'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('partituras.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -44,15 +36,29 @@ class PartituraController extends Controller
 
             $filename = $file->getClientOriginalName();
             $folderName = 'imagenes/' . $request->get('nombre');
-            $path = $file->storeAs('public/' . $folderName, $filename);
-        
-            $imagenPath = storage_path('app/' . $path);
-            $outputPath = storage_path('app/public/' . $folderName . '/' . pathinfo($filename, PATHINFO_FILENAME) . '.musicxml');
+            
+            // Crear carpeta 'data' para almacenar la imagen y el archivo musicxml
+            $dataFolder = 'public/' . $folderName . '/data';
+            \Storage::makeDirectory($dataFolder);
+    
+            // Guardar la imagen en la carpeta 'data'
+            $imagePath = $file->storeAs($dataFolder, $filename);
+    
+            // Ruta del archivo musicxml dentro de 'data'
+            $musicxmlPath = $dataFolder . '/' . pathinfo($filename, PATHINFO_FILENAME) . '.musicxml';
+    
+            // Crear subdirectorio 'midi' para almacenar el archivo midi
+            $midiFolder = 'public/' . $folderName . '/midi';
+            \Storage::makeDirectory($midiFolder);
+    
+            // Ruta del archivo midi dentro de 'midi'
+            $midiPath = $midiFolder . '/' . pathinfo($filename, PATHINFO_FILENAME) . '.mid';
 
             $partitura = new Partitura([
                 'nombre' => $request->get('nombre'),
-                'image_path' => $path,
-                'musicxml_path' =>  'public/' . $folderName . '/' . pathinfo($filename, PATHINFO_FILENAME) . '.musicxml',
+                'image_path' => $imagePath,  // Imagen guardada en 'data'
+                'musicxml_path' => $musicxmlPath,  // Archivo musicxml en 'data'
+                'midi_path' => $midiPath,  // Archivo midi en 'midi'
             ]);
 
             $partitura->save();
@@ -69,37 +75,29 @@ class PartituraController extends Controller
         return redirect('/partituras')->with('error', 'Error al subir la partitura.');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
-        // Buscar la partitura por ID
         $partitura = Partitura::findOrFail($id);
 
-        // Pasar la partitura a la vista
+        try {
+            ProcessConvert::dispatch($partitura->id);
+        } catch (\Exception $e) {
+            \Log::error('Error in ProcessConvert: ' . $e->getMessage());
+        }
+
         return view('partituras.show', compact('partitura'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         $partitura = Partitura::find($id);

@@ -11,7 +11,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
-use Illuminate\Support\Facades\Cache; // Or you can use database
+use Illuminate\Support\Facades\Cache; 
 
 class ProcessOemer implements ShouldQueue
 {

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('nombre');
             $table->string('image_path');
             $table->string('musicxml_path');
+            $table->string('midi_path');
         });
     }
     

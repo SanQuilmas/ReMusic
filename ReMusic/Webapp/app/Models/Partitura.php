@@ -12,6 +12,7 @@ class Partitura extends Model
     protected $fillable = [
         'nombre',
         'image_path',
-        'musicxml_path'
+        'musicxml_path',
+        'midi_path'
     ];
 }

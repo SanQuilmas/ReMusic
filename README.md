@@ -33,3 +33,9 @@ php artisan serve
 ```
 php artisan queue:work --timeout=3600
 ```
+
+Otros proyectos usados:
+https://github.com/opensheetmusicdisplay/opensheetmusicdisplay
+https://github.com/cifkao/html-midi-player
+https://github.com/ianberman/MusicXML-to-MIDI-Converter/
+https://github.com/BreezeWhite/oemer
