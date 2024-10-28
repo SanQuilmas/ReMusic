@@ -43,10 +43,17 @@ class ProcessOemer implements ShouldQueue
         // Simulate progress (you can update this with actual progress if possible)
         $process->start();
 
+        $max_progress = 60;
+        $progress = 0;
+
         while ($process->isRunning()) {
             // Optionally, here you can simulate updating progress, e.g. 50% done
             sleep(30); // Sleep to reduce server load
-            Cache::put("progress_{$this->partituraId}", Cache::get("progress_{$this->partituraId}") + 5); // Simulated, change logic to track actual progress
+            $progress = $progress + 5;
+            Cache::put("progress_{$this->partituraId}", $progress);
+            if($progress >= $max_progress){
+                break;
+            }
         }
 
         // Check if the process failed
@@ -57,8 +64,7 @@ class ProcessOemer implements ShouldQueue
             throw new ProcessFailedException($process);
         }
 
-        // Mark the progress as complete
-        Cache::put("progress_{$this->partituraId}", 100);
+        Cache::put("progress_{$this->partituraId}", 75);
     }
 
     private function deletePartitura()

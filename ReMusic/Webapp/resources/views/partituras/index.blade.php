@@ -61,6 +61,8 @@
                                     var progressBar = $('#progress-bar-' + partituraId);
                                     var progressContainer = $('#progress-container-' + partituraId);
                                     var downloadContainer = $('#download-container-' + partituraId);
+                                    
+                                    downloadContainer.hide();
 
                                     if (data === null || typeof data === 'undefined' || data >= 100 || data == 0) {
                                         console.log('Progress is null or complete, showing download button.');
@@ -78,7 +80,7 @@
                                         // Show progress bar and hide download button
                                         progressContainer.show();
                                         downloadContainer.hide();
-                                        setTimeout(updateProgress, 2000); // Poll every 2 seconds
+                                        setTimeout(updateProgress, 20000); // Poll every 2 seconds
                                     } else {
                                         // Show download button and hide progress bar when completed
                                         alert('Processing complete!');
@@ -94,6 +96,7 @@
                             }
 
                             updateProgress(); // Start polling
+                            
                         })({{ $partitura->id }}); // Immediately invoke the function with the current partitura ID
                     });
                 </script>

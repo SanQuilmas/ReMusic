@@ -59,5 +59,7 @@ class ProcessConvert implements ShouldQueue
             throw new ProcessFailedException($process);
         }
 
+        Cache::put("progress_{$this->partituraId}", 100);
+
     }
 }

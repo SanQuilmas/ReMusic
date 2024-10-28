@@ -8,6 +8,7 @@ use App\Jobs\ProcessConvert;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Bus;
 use Illuminate\Support\Facades\Cache;
 
 class PartituraController extends Controller
@@ -63,11 +64,18 @@ class PartituraController extends Controller
 
             $partitura->save();
             
-            try {
-                ProcessOemer::dispatch($partitura->id);
-            } catch (\Exception $e) {
-                \Log::error('Error in ProcessOemer: ' . $e->getMessage());
-            }
+//            try {
+//                ProcessOemer::dispatch($partitura->id);
+//            } catch (\Exception $e) {
+//                \Log::error('Error in ProcessOemer: ' . $e->getMessage());
+//            }
+
+            Bus::chain([
+                new ProcessOemer($partitura->id),
+                new ProcessConvert($partitura->id),
+            ])->catch(function (Throwable $e) {
+                \Log::error('Error in job chain: ' . $e->getMessage());
+            })->dispatch();
 
             return redirect('/partituras')->with('success', 'Partitura guardada!');
         }
@@ -79,11 +87,11 @@ class PartituraController extends Controller
     {
         $partitura = Partitura::findOrFail($id);
 
-        try {
-            ProcessConvert::dispatch($partitura->id);
-        } catch (\Exception $e) {
-            \Log::error('Error in ProcessConvert: ' . $e->getMessage());
-        }
+//        try {
+//            ProcessConvert::dispatch($partitura->id);
+//        } catch (\Exception $e) {
+//            \Log::error('Error in ProcessConvert: ' . $e->getMessage());
+//        }
 
         return view('partituras.show', compact('partitura'));
     }
