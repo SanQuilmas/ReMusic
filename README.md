@@ -39,7 +39,7 @@ npm run dev
 php artisan serve
 ```
 ```
-php artisan queue:work --timeout=3600
+php artisan queue:work --timeout=36000
 ```
 
 ## Otros proyectos usados:

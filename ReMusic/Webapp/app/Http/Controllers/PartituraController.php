@@ -63,12 +63,6 @@ class PartituraController extends Controller
             ]);
 
             $partitura->save();
-            
-//            try {
-//                ProcessOemer::dispatch($partitura->id);
-//            } catch (\Exception $e) {
-//                \Log::error('Error in ProcessOemer: ' . $e->getMessage());
-//            }
 
             Bus::chain([
                 new ProcessOemer($partitura->id),
@@ -76,6 +70,8 @@ class PartituraController extends Controller
             ])->catch(function (Throwable $e) {
                 \Log::error('Error in job chain: ' . $e->getMessage());
             })->dispatch();
+
+            sleep(1); 
 
             return redirect('/partituras')->with('success', 'Partitura guardada!');
         }

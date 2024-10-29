@@ -28,33 +28,46 @@ class ProcessOemer implements ShouldQueue
     {
         $partitura = Partitura::find($this->partituraId);
         $imagenPath = storage_path('app/' . $partitura->image_path);
-        $outputPath = storage_path('app/' . $partitura->musicxml_path);
+        $outputPath = dirname(storage_path('app/' . $partitura->musicxml_path));
 
-        Log::info("Image Path: {$imagenPath}");
-        Log::info("Output Path: {$outputPath}");
+        Log::info("Oemer Input Path: {$imagenPath}");
+        Log::info("Oemer Output Path: {$outputPath}");
+
+        if (file_exists((storage_path('app/' . $partitura->musicxml_path)))) {
+            Log::info("El archivo MusicXML ya existe en: {(storage_path('app/' . $partitura->musicxml_path))}. Proceso de conversión omitido.");
+            Cache::put("progress_{$this->partituraId}", 96);
+            return; // Si ya existe, no ejecutar el proceso
+        }
 
         // Execute the 'oemer' command
         $process = new Process(['oemer', '-o', $outputPath, $imagenPath]);
         $process->setTimeout(null); // No timeout
         
-        // Set initial progress to 0
         Cache::put("progress_{$this->partituraId}", 1);
 
-        // Simulate progress (you can update this with actual progress if possible)
-        $process->start();
+        //$process->start();
 
-        $max_progress = 60;
-        $progress = 0;
+        $progress = 0; //Max Progress 96% porque el proceso oemer es el 96% del tiempo de guardado aproximadamente
+        $counter = 12;
 
-        while ($process->isRunning()) {
-            // Optionally, here you can simulate updating progress, e.g. 50% done
-            sleep(30); // Sleep to reduce server load
-            $progress = $progress + 5;
-            Cache::put("progress_{$this->partituraId}", $progress);
-            if($progress >= $max_progress){
-                break;
+        $process->run(function ($type, $buffer) use (&$progress, &$counter) {
+            if (Process::ERR === $type) {
+                Log::error('Oemer Error Output: ' . $buffer);
+            } else {
+                Log::info('Oemer Output: ' . $buffer);
             }
-        }
+
+            if($counter > 0){
+                $progressTick = 6.9;
+                $counter = $counter - 1;
+            }else {
+                $progressTick = 0.1;
+            }
+
+            $progress = $progress + $progressTick;
+            Cache::put("progress_{$this->partituraId}", $progress);
+
+        });
 
         // Check if the process failed
         if (!$process->isSuccessful()) {
@@ -62,9 +75,9 @@ class ProcessOemer implements ShouldQueue
             // Borrar la partitura si falla el proceso
             $this->deletePartitura();
             throw new ProcessFailedException($process);
-        }
+        } 
 
-        Cache::put("progress_{$this->partituraId}", 75);
+        Cache::put("progress_{$this->partituraId}", 96);
     }
 
     private function deletePartitura()

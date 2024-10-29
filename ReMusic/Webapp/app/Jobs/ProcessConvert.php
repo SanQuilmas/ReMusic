@@ -37,6 +37,7 @@ class ProcessConvert implements ShouldQueue
 
         if (file_exists($midiFilePath)) {
             Log::info("El archivo MIDI ya existe en: {$midiFilePath}. Proceso de conversión omitido.");
+            Cache::put("progress_{$this->partituraId}", 100);
             return; // Si ya existe, no ejecutar el proceso
         }
 
