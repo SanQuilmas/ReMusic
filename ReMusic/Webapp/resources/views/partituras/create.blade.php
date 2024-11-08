@@ -12,20 +12,21 @@
 			</ul>
 		</div><br />
 	@endif
-    
-    <div class="p-2 m-2 bg-info text-black shadow rounded-2">
-        <form method="post" action="{{ route('partituras.store') }}" enctype="multipart/form-data">
-            @csrf
-            <div class="form-group">    
-                <label for="nombre">Nombre:</label>
-                <input type="text" class="form-control" name="nombre" required/>
-            </div>
-            <div class="mb-3">
-                <label for="imagen" class="form-label">Subir Imagen</label>
-                <input class="form-control" type="file" accept="image/*" capture="camera" id="imagen" name="imagen" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Subir y Digitalizar</button>
-        </form>
+    <div class="container-fluid">
+        <div class="p-2 m-2 rounded-2" style="background-color: #885A5A;">
+            <form method="post" action="{{ route('partituras.store') }}" enctype="multipart/form-data">
+                @csrf
+                <div class="form-group">    
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" class="form-control" name="nombre" required style="background-color: #DCE0D9;"/>
+                </div>
+                <div class="mb-3">
+                    <label for="imagen" class="form-label">Subir Imagen</label>
+                    <input class="form-control" type="file" accept="image/*" capture="camera" id="imagen" name="imagen" required style="background-color: #DCE0D9;">
+                </div>
+                <button type="submit" class="btn btn-primary text-black" style="background-color: #228CDB;">Subir y Digitalizar</button>
+            </form>
+        </div>
     </div>
 </div>
 

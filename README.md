@@ -41,6 +41,10 @@ php artisan serve
 ```
 php artisan queue:work --timeout=36000
 ```
+En el caso de quererlo correr en alguna red en vez de correrlo para desarollo local, se requiere lo siguente con los cambios competentes.
+```
+php artisan serve --host 0.0.0.0 --port=8000
+```
 
 ## Otros proyectos usados:
 - https://github.com/opensheetmusicdisplay/opensheetmusicdisplay

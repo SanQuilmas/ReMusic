@@ -2,7 +2,7 @@
 
 @section('main')
 
-<div class="container">
+<div class="p-2 m-2 rounded-2">
     <table class="table table-dark table-striped">
         <thead>
             <tr>
@@ -31,7 +31,7 @@
                         </div>
 
                         <div id="download-container-{{ $partitura->id }}">
-                            <a href="{{ route('partituras.show', $partitura->id) }}" class="btn btn-success">
+                            <a href="{{ route('partituras.show', $partitura->id) }}" class="btn btn-success" style="background-color: #885A5A;">
                                 Ver y Descargar MusicXML
                             </a>
                         </div>
@@ -41,7 +41,7 @@
                         <form action="{{ route('partituras.destroy', $partitura->id) }}" method="post">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-danger" type="submit">Eliminar</button>
+                            <button class="btn btn-danger" type="submit" style="background-color: #D10000;">Eliminar</button>
                         </form>
                     </td>
                 </tr>

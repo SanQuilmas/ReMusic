@@ -13,14 +13,14 @@
 		</div><br />
 	@endif
 
-	<div class="p-2 m-2 bg-info text-black shadow rounded-2">
+	<div class="p-2 m-2 rounded-2" style="background-color: #885A5A;">
 		<div>
-		<h1>Nombre: {{ $partitura->nombre }}</h1>
+		<h1>{{ $partitura->nombre }}</h1>
             <plabel>Archivo MusicXML:</label>
-            <a href="{{ Storage::url($partitura->musicxml_path) }}" class="btn btn-primary" download>Descargar MusicXML</a>
+            <a href="{{ Storage::url($partitura->musicxml_path) }}" class="btn btn-primary text-black" download style="background-color: #228CDB;">Descargar MusicXML</a>
 
 			<plabel>Archivo Midi:</label>
-            <a href="{{ Storage::url($partitura->midi_path) }}" class="btn btn-primary" download>Descargar Midi</a>
+            <a href="{{ Storage::url($partitura->midi_path) }}" class="btn btn-primary text-black" download style="background-color: #228CDB;">Descargar Midi</a>
 		</div>
 
 		<div id="osmdContainer"/>
@@ -42,7 +42,7 @@
 		</script>
 	</div>
 
-	<div class="p-2 m-2 bg-info text-black shadow rounded-2">
+	<div class="p-2 m-2 rounded-2" style="background-color: #885A5A;">
 		<script src="{{ asset('html-midi-player.min.js') }}"></script>
 
 		<midi-player
