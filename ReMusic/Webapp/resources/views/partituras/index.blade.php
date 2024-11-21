@@ -31,7 +31,7 @@
                         </div>
 
                         <div id="download-container-{{ $partitura->id }}">
-                            <a href="{{ route('partituras.show', $partitura->id) }}" class="btn btn-success" style="background-color: #885A5A;">
+                            <a href="{{ route('partituras.show', $partitura->id) }}" class="btn btn-success">
                                 Ver y Descargar MusicXML
                             </a>
                         </div>
