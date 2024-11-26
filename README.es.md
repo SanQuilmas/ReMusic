@@ -48,8 +48,14 @@ php artisan serve --host 0.0.0.0 --port=8000
 ```
 
 ## Otros proyectos usados:
-- [OpenSheetMusicDisplay] (https://github.com/opensheetmusicdisplay/opensheetmusicdisplay)
-- [HTML MIDI Player] (https://github.com/cifkao/html-midi-player)
-- [MusicXML-to-MIDI Converter] (https://github.com/ianberman/MusicXML-to-MIDI-Converter/)
-- [Oemer] (https://github.com/BreezeWhite/oemer)
-- [Music21] (https://github.com/cuthbertLab/music21)
+- [OpenSheetMusicDisplay](https://github.com/opensheetmusicdisplay/opensheetmusicdisplay)
+- [HTML MIDI Player](https://github.com/cifkao/html-midi-player)
+- [MusicXML-to-MIDI Converter](https://github.com/ianberman/MusicXML-to-MIDI-Converter/)
+- [Oemer](https://github.com/BreezeWhite/oemer)
+- [Music21](https://github.com/cuthbertLab/music21)
+
+## Showcase
+![](/ReMusic/Demo%20Images/ReMusic-Welcome.png)
+![](/ReMusic/Demo%20Images/ReMusic-Create.png)
+![](/ReMusic/Demo%20Images/ReMusic-Gallery.png)
+![](/ReMusic/Demo%20Images/ReMusic-ShowDownload.png)
