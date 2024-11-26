@@ -1,7 +1,7 @@
 # ReMusic
 [![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/SanQuilmas/ReMusic/blob/main/README.md)
 
-https://youtube.com/shorts/q2IjKk_yYT8?feature=share
+[Mira la primera introduccion del proyecto](https://youtube.com/shorts/q2IjKk_yYT8?feature=share)
 
 ## Instrucciones de Instalacion:
 

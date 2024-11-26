@@ -1,7 +1,7 @@
 # ReMusic
-[![es](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/SanQuilmas/ReMusic/blob/main/README.es.md)
+[![es](https://img.shields.io/badge/lang-es-red.svg)](https://github.com/SanQuilmas/ReMusic/blob/main/README.es.md)
 
-https://youtube.com/shorts/q2IjKk_yYT8?feature=share
+[See the first product introduction](https://youtube.com/shorts/q2IjKk_yYT8?feature=share)
 
 ## Installation Instructions:
 
@@ -48,8 +48,8 @@ php artisan serve --host 0.0.0.0 --port=8000
 ```
 
 ## Other Projects Used:
-- [OpenSheetMusicDisplay] (https://github.com/opensheetmusicdisplay/opensheetmusicdisplay)
-- [HTML MIDI Player] (https://github.com/cifkao/html-midi-player)
-- [MusicXML-to-MIDI Converter] (https://github.com/ianberman/MusicXML-to-MIDI-Converter/)
-- [Oemer] (https://github.com/BreezeWhite/oemer)
-- [Music21] (https://github.com/cuthbertLab/music21)
+- [OpenSheetMusicDisplay](https://github.com/opensheetmusicdisplay/opensheetmusicdisplay)
+- [HTML MIDI Player](https://github.com/cifkao/html-midi-player)
+- [MusicXML-to-MIDI Converter](https://github.com/ianberman/MusicXML-to-MIDI-Converter/)
+- [Oemer](https://github.com/BreezeWhite/oemer)
+- [Music21](https://github.com/cuthbertLab/music21)
