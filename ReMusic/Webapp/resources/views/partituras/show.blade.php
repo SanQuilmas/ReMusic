@@ -17,11 +17,11 @@
 		<div class="p-2 m-2 rounded-2" style="background-color: #6b8e23;">
 			<div>
 			<h1>{{ $partitura->nombre }}</h1>
-				<plabel>Archivo MusicXML:</label>
-				<a href="{{ Storage::url($partitura->musicxml_path) }}" class="btn btn-primary text-black" download style="background-color: #228CDB;">Descargar MusicXML</a>
+				
+				<div>
+					<a href="{{ Storage::url($partitura->musicxml_path) }}" class="btn btn-primary text-black" download style="background-color: #228CDB;">Download MusicXML</a>
+				</div>
 
-				<plabel>Archivo Midi:</label>
-				<a href="{{ Storage::url($partitura->midi_path) }}" class="btn btn-primary text-black" download style="background-color: #228CDB;">Descargar Midi</a>
 			</div>
 
 			<div id="osmdContainer"/>
@@ -41,6 +41,10 @@
 					}
 				);
 			</script>
+		</div>
+
+		<div>
+			<a href="{{ Storage::url($partitura->midi_path) }}" class="btn btn-primary text-black" download style="background-color: #228CDB;">Download Midi</a>
 		</div>
 
 		<div class="p-2 m-2 rounded-2" style="background-color: #6b8e23;">

@@ -6,17 +6,15 @@
     <table class="table table-dark table-striped">
         <thead>
             <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Imagen</th>
-                <th scope="col">Archivo</th>
-                <th scope="col" colspan="2">Acciones</th>
+                <th scope="col">Name</th>
+                <th scope="col">Image</th>
+                <th scope="col">File</th>
+                <th scope="col" colspan="2">Actions</th>
             </tr>
         </thead>
         <tbody>
             @foreach($partituras as $partitura)
                 <tr>
-                    <td>{{ $partitura->id }}</td>
                     <td>{{ $partitura->nombre }}</td>
 
                     <td>
@@ -32,7 +30,7 @@
 
                         <div id="download-container-{{ $partitura->id }}">
                             <a href="{{ route('partituras.show', $partitura->id) }}" class="btn btn-success">
-                                Ver y Descargar MusicXML
+                                Download and Show MusicXML
                             </a>
                         </div>
                     </td>
@@ -41,7 +39,7 @@
                         <form action="{{ route('partituras.destroy', $partitura->id) }}" method="post">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-danger" type="submit" style="background-color: #D10000;">Eliminar</button>
+                            <button class="btn btn-danger" type="submit" style="background-color: #D10000;">Delete</button>
                         </form>
                     </td>
                 </tr>

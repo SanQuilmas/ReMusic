@@ -17,14 +17,14 @@
             <form method="post" action="{{ route('partituras.store') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">    
-                    <label for="nombre">Nombre:</label>
+                    <label for="nombre">Name:</label>
                     <input type="text" class="form-control" name="nombre" required/>
                 </div>
                 <div class="mb-3">
-                    <label for="imagen" class="form-label">Subir Imagen</label>
+                    <label for="imagen" class="form-label">Upload Image</label>
                     <input class="form-control" type="file" accept="image/*" capture="camera" id="imagen" name="imagen" required>
                 </div>
-                <button type="submit" class="btn btn-primary text-black">Subir y Digitalizar</button>
+                <button type="submit" class="btn btn-primary text-black">Upload and Digitize</button>
             </form>
         </div>
     </div>

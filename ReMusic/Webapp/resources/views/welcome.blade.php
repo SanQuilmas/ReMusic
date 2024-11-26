@@ -49,10 +49,10 @@
 				<div class="collapse navbar-collapse" id="navbarNav">
 					<ul class="navbar-nav">
 					<li class="nav-item active">
-						<a class="nav-link" href="/partituras/create">Subir Nueva</a>
+						<a class="nav-link" href="/partituras/create">New Upload</a>
 					</li>
 					<li class="nav-item active">
-						<a class="nav-link" href="/partituras">Galeria</a>
+						<a class="nav-link" href="/partituras">Gallery</a>
 					</li>
 					</ul>
 				</div>
@@ -62,7 +62,7 @@
 		<header class="header-section text-center">
 			<div class="container">
 				<h1 class="display-4">ReMusic</h1>
-				<p class="lead">Escanea partituras físicas y conviertelas a formato digital editable.</p>
+				<p class="lead">Scan physical sheet music and convert it into an editable digital format.</p>
 			</div>
     	</header>
 
@@ -71,7 +71,7 @@
 		</div>
 
 		<footer class="py-4 text-center">
-			<p>&copy; 2024 ReMusic. Todos los derechos reservados.</p>
+			<p>&copy; 2024 ReMusic. All rights reserved.</p>
     	</footer>
 
 	</body>
