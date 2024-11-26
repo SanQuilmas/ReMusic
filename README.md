@@ -54,7 +54,7 @@ php artisan serve --host 0.0.0.0 --port=8000
 - [Oemer](https://github.com/BreezeWhite/oemer)
 - [Music21](https://github.com/cuthbertLab/music21)
 
-## Muestra
+## Showcase
 ![](/ReMusic/Demo%20Images/ReMusic-Welcome.png)
 ![](/ReMusic/Demo%20Images/ReMusic-Create.png)
 ![](/ReMusic/Demo%20Images/ReMusic-Gallery.png)
