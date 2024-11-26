@@ -1,6 +1,11 @@
 # ReMusic
 [![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/SanQuilmas/ReMusic/blob/main/README.md)
 
+![](/ReMusic/Demo%20Images/ReMusic-Welcome.png)
+![](/ReMusic/Demo%20Images/ReMusic-Create.png)
+![](/ReMusic/Demo%20Images/ReMusic-Gallery.png)
+![](/ReMusic/Demo%20Images/ReMusic-ShowDownload.png)
+
 [Mira la primera introduccion del proyecto](https://youtube.com/shorts/q2IjKk_yYT8?feature=share)
 
 ## Instrucciones de Instalacion:
@@ -53,9 +58,3 @@ php artisan serve --host 0.0.0.0 --port=8000
 - [MusicXML-to-MIDI Converter](https://github.com/ianberman/MusicXML-to-MIDI-Converter/)
 - [Oemer](https://github.com/BreezeWhite/oemer)
 - [Music21](https://github.com/cuthbertLab/music21)
-
-## Muestra
-![](/ReMusic/Demo%20Images/ReMusic-Welcome.png)
-![](/ReMusic/Demo%20Images/ReMusic-Create.png)
-![](/ReMusic/Demo%20Images/ReMusic-Gallery.png)
-![](/ReMusic/Demo%20Images/ReMusic-ShowDownload.png)
